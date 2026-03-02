@@ -1,6 +1,5 @@
 # Data directory
-/data/*
-!/data/.gitkeep
+# /03-data/ is tracked
 
 # Python
 __pycache__/
