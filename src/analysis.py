@@ -18,8 +18,8 @@ def find_comparable_titles(
 ) -> pd.DataFrame:
     """Find top-rated titles matching any of the given genres."""
     mask = df["genres"].str.contains("|".join(genres), na=False)
-    mask &= df["numVotes"] >= min_votes
-    return df.loc[mask].nlargest(top_n, "averageRating")
+    mask &= df["numberOfVotes"] >= min_votes
+    return df.loc[mask].nlargest(top_n, "imdbRating")
 
 
 def main() -> None:

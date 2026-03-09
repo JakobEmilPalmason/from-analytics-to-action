@@ -3,3 +3,6 @@ matplotlib
 seaborn
 jupyter
 requests
+networkx
+openpyxl
+ipykernel
