@@ -11,6 +11,7 @@ Support **Publikum** (formerly Will & Agency), a film/TV audience insights compa
 | GitHub | Role |
 |--------|------|
 | [JakobEmilPalmason](https://github.com/JakobEmilPalmason) | Owner |
+| [bodvarsdottirkristin](https://github.com/bodvarsdottirkristin) | Collaborator |
 | [hlynurblaer](https://github.com/hlynurblaer) | Collaborator |
 | [egillbjarnigislason](https://github.com/egillbjarnigislason) | Collaborator |
 | [Hilmirbatman](https://github.com/Hilmirbatman) | Collaborator |
