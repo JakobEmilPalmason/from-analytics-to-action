@@ -6,3 +6,4 @@ requests
 networkx
 openpyxl
 ipykernel
+scikit-learn
