@@ -1,5 +1,7 @@
 # Data directory
 # /03-data/ is tracked
+03-data/ml-32m.zip
+03-data/ml-32m/
 
 # Python
 __pycache__/
