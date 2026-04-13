@@ -134,6 +134,39 @@ Then open the notebook:
 jupyter notebook notebooks/data_analysis.ipynb
 ```
 
+## Enrichment Pipeline
+
+The enrichment pipeline augments the base dataset (`03-data/Movie_50k.csv`) with three additional sources: TMDb (budget, revenue, popularity), IMDb GraphQL (per-star rating distributions), and MovieLens 32M (user ratings and tags). The final output is `03-data/films_enriched.csv`.
+
+### Prerequisites
+
+1. **TMDb API key** — required by `src/fetch_tmdb.py`. Get a free key at <https://www.themoviedb.org/settings/api>.
+2. **MovieLens 32M archive** — download `ml-32m.zip` from <https://grouplens.org/datasets/movielens/32m/> (~240 MB) and place it at `03-data/ml-32m.zip`. The archive is git-ignored.
+
+### Setup
+
+```bash
+cp .env.example .env
+# edit .env and paste your TMDB_API_KEY
+```
+
+`.env` is git-ignored, so your key will never be committed.
+
+### Run order
+
+All three fetch scripts support resume — if interrupted, rerun the same command and they skip already-fetched rows. Merge key is `titleId` throughout.
+
+| Step | Command | Time | Notes |
+|------|---------|------|-------|
+| 1 | `python -m src.fetch_movielens` | ~2–3 min | Local ZIP, no network, no key |
+| 2 | `python -m src.fetch_imdb_ratings` | ~1.5–2 h | Public GraphQL endpoint, no key, 100 ms/req |
+| 3 | `python -m src.fetch_tmdb` | ~2–3 h | Needs `TMDB_API_KEY`, ~40 ms between requests |
+| 4 | Run `notebooks/data_enrichment.ipynb` | seconds | Merges the three enrichment CSVs with the base dataset |
+
+Steps 2 and 3 hit different APIs and can safely run in parallel (e.g. in two terminals).
+
+Outputs land in `03-data/raw/` (per-source enrichments) and `03-data/films_enriched.csv` (final combined dataset).
+
 ## Ethical & Quality Considerations
 
 - IMDb data is for **non-commercial use only** — respect the license

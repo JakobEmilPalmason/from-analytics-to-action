@@ -15,11 +15,14 @@ import time
 
 import pandas as pd
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 API_KEY = os.environ.get("TMDB_API_KEY", "")
 BASE_URL = "https://api.themoviedb.org/3"
-INPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "03-data", "European_data_2000.xlsx")
-OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "03-data", "tmdb_enrichment.csv")
+INPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "03-data", "Movie_50k.csv")
+OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "03-data", "raw", "tmdb_enrichment.csv")
 
 # TMDb rate limit: ~40 req/s — we stay conservative
 REQUEST_DELAY = 0.05  # 50ms between requests
@@ -71,7 +74,7 @@ def main() -> None:
         print("Get a free key at: https://www.themoviedb.org/settings/api")
         sys.exit(1)
 
-    df = pd.read_excel(INPUT_PATH)
+    df = pd.read_csv(INPUT_PATH)
     print(f"Loaded {len(df)} films from dataset")
 
     # Resume support: if output file exists, skip already-fetched films

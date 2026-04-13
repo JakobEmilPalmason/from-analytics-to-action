@@ -20,8 +20,8 @@ import pandas as pd
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "03-data")
 ZIP_PATH = os.path.join(DATA_DIR, "ml-32m.zip")
-INPUT_PATH = os.path.join(DATA_DIR, "European_data_2000.xlsx")
-OUTPUT_PATH = os.path.join(DATA_DIR, "movielens_enrichment.csv")
+INPUT_PATH = os.path.join(DATA_DIR, "Movie_50k.csv")
+OUTPUT_PATH = os.path.join(DATA_DIR, "raw", "movielens_enrichment.csv")
 
 
 def main() -> None:
@@ -31,7 +31,7 @@ def main() -> None:
         return
 
     # Load our film dataset
-    our_films = pd.read_excel(INPUT_PATH)
+    our_films = pd.read_csv(INPUT_PATH)
     # Extract numeric IMDb IDs (strip 'tt' prefix and leading zeros)
     our_films["imdbIdNum"] = our_films["titleId"].str.replace("tt", "").astype(int)
     print(f"Our dataset: {len(our_films)} films")

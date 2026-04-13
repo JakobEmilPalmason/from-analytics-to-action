@@ -16,8 +16,8 @@ import pandas as pd
 import requests
 
 BASE_URL = "https://caching.graphql.imdb.com/"
-INPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "03-data", "European_data_2000.xlsx")
-OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "03-data", "imdb_rating_distributions.csv")
+INPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "03-data", "Movie_50k.csv")
+OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "03-data", "raw", "imdb_rating_distributions.csv")
 
 HEADERS = {
     "content-type": "application/json",
@@ -74,7 +74,7 @@ def fetch_ratings(imdb_id: str, session: requests.Session) -> dict | None:
 
 
 def main() -> None:
-    df = pd.read_excel(INPUT_PATH)
+    df = pd.read_csv(INPUT_PATH)
     print(f"Loaded {len(df)} films from dataset")
 
     # Resume support
