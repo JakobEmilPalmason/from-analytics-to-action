@@ -102,14 +102,15 @@ def main() -> None:
             continue
 
         results.append(result)
-        r10 = result.get("rating_10", 0)
-        r1 = result.get("rating_1", 0)
-        total_v = result.get("totalVotes", 0)
+        r10 = result.get("rating_10") or 0
+        r1 = result.get("rating_1") or 0
+        total_v = result.get("totalVotes") or 0
         print(f"  [{i+1}/{total}] {imdb_id} — {total_v:,} votes (10s: {r10:,}, 1s: {r1:,})")
 
         # Save every 100 films
         if len(results) % 100 == 0:
             _save(results, already_done)
+            results.clear()
 
     _save(results, already_done)
     _print_report()

@@ -122,6 +122,7 @@ def main() -> None:
         # Save progress every 100 films
         if len(results) % 100 == 0:
             _save(results, already_done)
+            results.clear()
 
     _save(results, already_done)
     _print_coverage_report()
