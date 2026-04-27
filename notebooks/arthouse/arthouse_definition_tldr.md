@@ -25,6 +25,47 @@ Auditable evidence means at least one of:
 - arthouse/provocation keyword
 - positive low budget up to USD 5M
 
+In short:
+
+```python
+is_arthouse = refined_provocation_core | strict_canon | composite
+```
+
+Where:
+
+```python
+refined_provocation_core = (
+    high_rating
+    & niche_reach_pdf
+    & has_keywords
+    & (evidence_signal | non_english_non_us)
+)
+
+strict_canon = specialty_label & festival_signal
+
+composite = (
+    arthouse_score >= 6
+    & high_rating
+    & niche_reach_broad
+    & evidence_signal
+)
+```
+
+And the score is:
+
+```text
++3 specialty label
++2 festival signal
++2 arthouse keyword
++1 non-English/non-US
++1 IMDb rating >= 7.0
++1 IMDb votes between 20 and 1,000
++1 positive budget up to USD 5M
++1 writer/director overlap
++1 low TMDb popularity
+-2 mainstream-risk keyword
+```
+
 ## Why This One
 
 - It keeps the original deck idea: arthouse is **high-rated but niche-reach**, not simply "foreign" or "independent".
