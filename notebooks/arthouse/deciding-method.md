@@ -1,6 +1,19 @@
 # Arthouse
 
-We tried two methods to define what counts as an "arthouse" film. 
+We tried two methods to define what counts as an "arthouse" film.
+
+## Decision
+
+**We're using the union of both methods.** A film counts as arthouse if **either**:
+
+- the rule-based `is_arthouse()` in `src/arthouse.py` flags it, **or**
+- Claude Haiku scored it `arthouse_score >= 8`.
+
+This gives a working cohort of **4,191 films (8.4% of the dataset)**: 675 from the rule, 3,710 from the LLM, 194 in the intersection. The two methods catch different canonical filmmakers — the rule via distributor and festival metadata (Chabrol, Audiard, de Oliveira, Akın), the LLM via auteur name recognition (Dreyer, Angelopoulos, Puiu, Loznitsa, Sciamma, Ruiz). Their hit lists barely overlap, so the union is meaningfully stronger than either alone. We're skipping `arthouse_score == 7` — it behaves more like "obscure foreign film" than arthouse (only ~6% genuine in our sample).
+
+The detail behind this choice is below.
+
+
 
 ## The two methods
 
