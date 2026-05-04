@@ -2,7 +2,7 @@
 
 The project uses arthouse as a working analytical category, not as a
 universal film-theory truth. The default definition combines the existing
-project framing from ``notebooks/arthouse/arthouse_provocation_final.pdf``
+project framing from ``notebooks/arthouse/arthouse-method-classification/arthouse_provocation_final.pdf``
 with auditable signals available in ``03-data/films_enriched.csv``:
 
 * high IMDb rating and niche audience reach;

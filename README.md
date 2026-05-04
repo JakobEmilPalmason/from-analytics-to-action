@@ -161,7 +161,7 @@ All three fetch scripts support resume — if interrupted, rerun the same comman
 | 1 | `python -m src.fetch_movielens` | ~2–3 min | Local ZIP, no network, no key |
 | 2 | `python -m src.fetch_imdb_ratings` | ~1.5–2 h | Public GraphQL endpoint, no key, 100 ms/req |
 | 3 | `python -m src.fetch_tmdb` | ~2–3 h | Needs `TMDB_API_KEY`, ~40 ms between requests |
-| 4 | Run `notebooks/data_enrichment.ipynb` | seconds | Merges the three enrichment CSVs with the base dataset |
+| 4 | Run `notebooks/analyses/data_enrichment.ipynb` | seconds | Merges the three enrichment CSVs with the base dataset |
 
 Steps 2 and 3 hit different APIs and can safely run in parallel (e.g. in two terminals).
 
