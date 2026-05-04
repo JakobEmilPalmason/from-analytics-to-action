@@ -297,7 +297,8 @@ def is_arthouse(df: pd.DataFrame, threshold: int = 6) -> pd.Series:
         signals["high_rating"]
         & signals["niche_reach_pdf"]
         & signals["has_keywords"]
-        & (evidence_signal | signals["non_english_non_us"])
+        & evidence_signal
+        & signals["non_english_non_us"]
     )
     strict_canon = signals["specialty_label"] & signals["festival_signal"]
     composite = (
