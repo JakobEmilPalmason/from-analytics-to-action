@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Good Provocation in Arthouse — Poster</title>
+<style>
+:root {
+  --navy:    #1a2e3d;
+  --primary: #3a5a78;
+  --accent:  #c46d4a;
+  --product: #2e8b57;
+  --reject:  #a63333;
+  --bg:      #f7f3ec;
+  --paper:   #ffffff;
+  --ink:     #1c1c1c;
+  --muted:   #6a6a6a;
+}
+
+@page { size: 594mm 841mm; margin: 0; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 594mm;
+  height: 841mm;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, "Helvetica Neue", "Inter", system-ui, sans-serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  font-feature-settings: "tnum" 1;
+}
+
+.poster {
+  width: 594mm;
+  height: 841mm;
+  padding: 18mm 18mm 14mm 18mm;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 8mm;
+}
+
+/* --- HEADER ------------------------------------------------------------- */
+.header {
+  background: var(--navy);
+  color: var(--paper);
+  padding: 10mm 12mm;
+  border-radius: 2mm;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6mm;
+  align-items: end;
+}
+.header h1 {
+  font-size: 48pt;
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+}
+.header .thesis {
+  font-size: 18pt;
+  font-weight: 400;
+  margin-top: 4mm;
+  color: #d6e2ec;
+  line-height: 1.25;
+  max-width: 380mm;
+}
+.header .thesis em { color: var(--accent); font-style: normal; font-weight: 600; }
+.header .thesis strong { color: var(--product); font-weight: 600; }
+.header .thesis .neg { color: #f0a07a; font-weight: 600; }
+.header .meta {
+  text-align: right;
+  font-size: 10pt;
+  line-height: 1.45;
+  color: #aebcc7;
+}
+.header .meta strong { color: var(--paper); display: block; font-size: 11pt; }
+
+/* --- KPI BANNER --------------------------------------------------------- */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4mm;
+}
+.kpi {
+  background: var(--paper);
+  border-left: 3mm solid var(--primary);
+  padding: 6mm 6mm 5mm 6mm;
+  border-radius: 1mm;
+}
+.kpi .num {
+  font-size: 28pt;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+}
+.kpi .num small { font-size: 14pt; font-weight: 600; color: var(--muted); }
+.kpi .lbl {
+  font-size: 9pt;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-top: 2mm;
+}
+.kpi.product { border-color: var(--product); }
+.kpi.reject  { border-color: var(--reject); }
+.kpi.accent  { border-color: var(--accent); }
+
+/* --- BODY --------------------------------------------------------------- */
+.body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6mm;
+}
+
+.section {
+  background: var(--paper);
+  border-radius: 1mm;
+  padding: 6mm 7mm 6mm 7mm;
+  break-inside: avoid;
+}
+.section h2 {
+  font-size: 14pt;
+  font-weight: 800;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 0.4mm solid var(--primary);
+  padding-bottom: 2mm;
+  margin-bottom: 3mm;
+}
+.section h2 .num {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--paper);
+  font-size: 11pt;
+  width: 6mm;
+  height: 6mm;
+  line-height: 6mm;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 3mm;
+  vertical-align: 1mm;
+}
+.section p {
+  font-size: 10pt;
+  line-height: 1.45;
+  margin-bottom: 2.5mm;
+}
+.section ul {
+  font-size: 10pt;
+  line-height: 1.45;
+  padding-left: 4.5mm;
+  margin-bottom: 2.5mm;
+}
+.section ul li { margin-bottom: 1.2mm; }
+.section ol {
+  font-size: 10pt;
+  line-height: 1.45;
+  padding-left: 5mm;
+  margin-bottom: 2.5mm;
+}
+.section ol li { margin-bottom: 1.2mm; }
+.section strong { color: var(--navy); }
+
+/* Highlight callout boxes */
+.callout {
+  background: #f3eee5;
+  border-left: 1mm solid var(--accent);
+  padding: 3mm 4mm;
+  margin: 2.5mm 0;
+  font-size: 10pt;
+  line-height: 1.4;
+}
+.callout strong { color: var(--accent); }
+.callout.product { border-color: var(--product); }
+.callout.product strong { color: var(--product); }
+.callout.reject  { border-color: var(--reject); }
+.callout.reject  strong { color: var(--reject); }
+
+/* The big findings section that spans both columns */
+.section.span-2 { grid-column: 1 / span 2; }
+
+.section .figure {
+  margin: 3mm 0;
+  text-align: center;
+}
+.section .figure img {
+  width: 100%;
+  border: 0.2mm solid #dcd4c5;
+  border-radius: 1mm;
+}
+.section .figure .caption {
+  font-size: 8.5pt;
+  color: var(--muted);
+  margin-top: 1.5mm;
+  text-align: left;
+  line-height: 1.35;
+}
+
+/* Provocation lexicon side-by-side */
+.lex-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4mm;
+  margin-top: 2mm;
+}
+.lex-card {
+  padding: 3mm 4mm;
+  border-radius: 1mm;
+  font-size: 10pt;
+}
+.lex-card.product { background: #e7f1ec; border-top: 1mm solid var(--product); }
+.lex-card.reject  { background: #f3e3e3; border-top: 1mm solid var(--reject); }
+.lex-card h4 {
+  font-size: 10.5pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2mm;
+}
+.lex-card.product h4 { color: var(--product); }
+.lex-card.reject  h4 { color: var(--reject); }
+.lex-card ul { padding-left: 4mm; font-size: 9.5pt; }
+
+/* 8 directions list */
+.dirs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1mm 4mm;
+  font-size: 9.5pt;
+  margin: 2mm 0;
+}
+.dirs .d { padding: 1.5mm 0; border-bottom: 0.1mm solid #eae2d2; }
+.dirs .d.pursued { color: var(--product); font-weight: 700; }
+.dirs .d.parked  { color: var(--muted); }
+.dirs .d .tag {
+  display: inline-block;
+  font-size: 7pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: var(--product);
+  color: white;
+  padding: 0.5mm 1.5mm;
+  border-radius: 1mm;
+  margin-left: 1mm;
+  letter-spacing: 0.05em;
+}
+.dirs .d.parked .tag { background: #b9b1a1; }
+
+/* --- FOOTER ------------------------------------------------------------- */
+.footer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  font-size: 8pt;
+  color: var(--muted);
+  border-top: 0.3mm solid #d6cdbb;
+  padding-top: 3mm;
+}
+.footer .credit { color: var(--ink); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- =================== HEADER =================== -->
+  <header class="header">
+    <div>
+      <h1>Good Provocation in Arthouse</h1>
+      <div class="thesis">
+        <strong>Formal</strong> provocation outperforms <span class="neg">transgressive</span> provocation.
+        The arthouse audience rewards <em>how</em> a film is told — not <em>what's</em> in it.
+      </div>
+    </div>
+    <div class="meta">
+      <strong>DTU · Spring 2026</strong>
+      Analytics in Action<br>
+      Industry partner: Publikum<br>
+      Team: [FILL: 6 names]<br>
+      Cohort cutoff: May 2026
+    </div>
+  </header>
+
+  <!-- =================== KPI BANNER =================== -->
+  <section class="kpis">
+    <div class="kpi">
+      <div class="num">50,000</div>
+      <div class="lbl">Films scored</div>
+    </div>
+    <div class="kpi accent">
+      <div class="num">4,191</div>
+      <div class="lbl">Arthouse cohort  (8.4%)</div>
+    </div>
+    <div class="kpi">
+      <div class="num">1,352</div>
+      <div class="lbl">Films with usable IMDb distribution</div>
+    </div>
+    <div class="kpi product">
+      <div class="num">+0.80<small> pts</small></div>
+      <div class="lbl">Cohort rating lift vs baseline</div>
+    </div>
+    <div class="kpi reject">
+      <div class="num">2 ×</div>
+      <div class="lbl">Distinct controversy regimes found</div>
+    </div>
+  </section>
+
+  <!-- =================== BODY =================== -->
+  <main class="body">
+
+    <!-- 1. PROJECT BRIEF -->
+    <section class="section">
+      <h2><span class="num">1</span>Project Brief</h2>
+      <p>
+        In partnership with <strong>Publikum</strong>, we investigated four strategic decision
+        questions the organization confronts every season: <strong>positioning, target audiences,
+        market strategy,</strong> and <strong>comparable-title selection</strong>.
+      </p>
+      <p>
+        Among candidate directions in the data, we chose the <strong>arthouse</strong> segment because
+        [FILL: WHY ARTHOUSE — e.g. "its economics differ structurally from mainstream releases —
+        modest budgets, festival-driven distribution, critic-led visibility — and Publikum lacked a
+        quantitative basis for the comp-matching and positioning calls they make every season"].
+      </p>
+      <div class="callout">
+        <strong>Business value.</strong> Arthouse is a defined, under-instrumented market. Better
+        polarization-shape data turns gut-feel positioning into a defensible variable; better comps
+        reduce review-variance surprises; a productive-provocation lexicon de-risks acquisition.
+      </div>
+    </section>
+
+    <!-- 2. DATA & ENRICHMENT -->
+    <section class="section">
+      <h2><span class="num">2</span>Data &amp; Enrichment</h2>
+      <p>
+        Starting from Publikum's <strong>seed dataset</strong>, we built a 50,000-film universe
+        enriched via API and bulk sources:
+      </p>
+      <ul>
+        <li><strong>IMDb non-commercial datasets</strong> — ratings, vote distributions (1–10), keywords, credits, runtime.</li>
+        <li><strong>TMDB API</strong> — country/language/budget/revenue, English titles, release dates.</li>
+        <li><strong>MovieLens</strong> — provisional cinephile-discovery tags (parked: 1.5% coverage).</li>
+        <li><strong>[FILL: any further sources, e.g. Letterboxd / festival lists / distributor records]</strong></li>
+      </ul>
+      <p>
+        Several enrichments — directors, languages, plot summaries — were carried even when not used
+        in this notebook so downstream analysis (e.g. embedding-based comp matching) can run without
+        re-enrichment.
+      </p>
+    </section>
+
+    <!-- 3. DEFINING ARTHOUSE -->
+    <section class="section">
+      <h2><span class="num">3</span>Defining Arthouse</h2>
+      <p>The cohort is the <strong>union</strong> of two complementary methods:</p>
+      <ul>
+        <li><strong>LLM scorer</strong> — GPT-class model rates each film 1–10 against a synthesized arthouse definition. Threshold: score ≥ 8. Catches auteur-driven films.</li>
+        <li><strong>Rule-based filter</strong> — derived from team consensus on industry markers (festivals, distributors, art-cinema metadata). Catches industry-arthouse titles the LLM misses.</li>
+      </ul>
+      <p>
+        The definition was tuned through manual review of <strong>50 random films</strong>, comparing
+        method outputs against human judgement until both hit acceptable precision.
+      </p>
+      <div class="callout">
+        <strong>Cohort source split.</strong>
+        LLM only: <strong>3,516</strong> (83.9%) ·
+        Rule only: <strong>481</strong> (11.5%) ·
+        Both: <strong>194</strong> (4.6%).
+        The two methods catch different populations — they are complementary, not redundant.
+      </div>
+    </section>
+
+    <!-- 4. COHORT & 8 DIRECTIONS -->
+    <section class="section">
+      <h2><span class="num">4</span>Our Arthouse Cohort</h2>
+      <p>
+        <strong>4,191 films, 8.4% of universe.</strong> Median release year 2007. France leads in
+        volume (25%); Belgium, Denmark, France lead per capita (≈17 films per million). Documentary
+        (47%) and drama (36%) dominate; 9% are genre-hybrids (horror, thriller, sci-fi, action).
+      </p>
+      <p>Field coverage drives what's analytically usable: country 100%, year 98%, IMDb rating 64%, keywords 65%, full vote distribution 32%, budget+revenue <strong>only 2.2%</strong>.</p>
+
+      <p style="margin-top:3mm;"><strong>Eight directions explored in the general analysis:</strong></p>
+      <div class="dirs">
+        <div class="d">1 · Cohort overview &amp; quality</div>
+        <div class="d pursued">2 · Audience reception &amp; polarization <span class="tag">pursued</span></div>
+        <div class="d">3 · Geography &amp; per-capita market</div>
+        <div class="d">4 · Temporal patterns</div>
+        <div class="d">5 · Genre &amp; thematic clusters (NMF, k=6)</div>
+        <div class="d">6 · Two arthouse modes (rule vs LLM)</div>
+        <div class="d parked">7 · Commercial signals <span class="tag">parked · 2% coverage</span></div>
+        <div class="d parked">8 · Cinephile discovery <span class="tag">parked · 1.5% coverage</span></div>
+      </div>
+
+      <div class="callout">
+        <strong>Why provocation.</strong> The cohort polarizes only +0.017 above baseline — a flat
+        average hides everything. But intra-cohort, formal-experimental films sit at polar 0.34 /
+        rating 6.97 while explicit-content films sit at polar 0.30 / rating 5.37.
+        <strong>That gap was the signal worth chasing.</strong>
+      </div>
+    </section>
+
+    <!-- 5. THE DIRECTION (SPANS BOTH COLUMNS) -->
+    <section class="section span-2">
+      <h2><span class="num">5</span>The Direction We Pursued · Good vs. Bad Provocation</h2>
+
+      <p>
+        Splitting <strong>1,352 films with usable IMDb distributions</strong> on two axes —
+        polarization (share of votes in 1–2 + 9–10) and mean rating — reveals two distinct
+        controversy regimes. A single polarization score collapses them; the rating axis separates
+        them.
+      </p>
+
+      <div style="display:grid; grid-template-columns: 1.05fr 0.95fr; gap: 6mm; margin-top: 3mm;">
+        <div class="figure">
+          <img src="figures/provocation/01_headline_scatter.png" alt="Headline scatter">
+          <div class="caption">
+            <strong>Fig. 1 · Two kinds of arthouse controversy.</strong>
+            Each dot is a cohort film. Quadrants split at cohort medians. The right side of the
+            chart contains all "polarized" films — they split sharply on the rating axis with no
+            middle.
+          </div>
+        </div>
+        <div class="figure">
+          <img src="figures/provocation/04_lexicon_bars.png" alt="Lexicon bars">
+          <div class="caption">
+            <strong>Fig. 2 · Provocation lexicon.</strong>
+            Among above-median-polar keywords, ranked by mean rating: top = productive, bottom =
+            rejected. Same controversy magnitude, opposite reception.
+          </div>
+        </div>
+      </div>
+
+      <div class="lex-grid">
+        <div class="lex-card product">
+          <h4>Productive provocation</h4>
+          <p style="font-size:9.5pt; line-height:1.4;">
+            High polarization <em>and</em> high mean rating. A vocal refusing minority cannot kill
+            the film. Productive lexicon: <strong>experimental, avant-garde, surrealism, essay,
+            non-linear narrative, ambiguity, slow cinema</strong>. Anchor titles: Persona, Mulholland
+            Drive, The Zone of Interest.
+          </p>
+        </div>
+        <div class="lex-card reject">
+          <h4>Rejected provocation</h4>
+          <p style="font-size:9.5pt; line-height:1.4;">
+            Same polarization profile, opposite verdict — heavy mass at 1–2 with a small defending
+            tail. Rejected lexicon clusters around graphic-content keywords (the LLM's known
+            false-positive mode). A loyal niche cannot save these films at audience scale.
+          </p>
+        </div>
+      </div>
+
+      <p style="margin-top:3mm;">
+        <strong>Why this matters.</strong> Both regimes look identical on a single polarization
+        score. They are not the same product. Polarization is a <em>shape</em>, not a number — and
+        the shape predicts whether controversy converts.
+      </p>
+    </section>
+
+    <!-- 6. RECOMMENDATIONS & LIMITATIONS -->
+    <section class="section span-2">
+      <h2><span class="num">6</span>Recommendations &amp; Limitations</h2>
+
+      <div style="display:grid; grid-template-columns: 1.4fr 1fr; gap: 6mm;">
+        <div>
+          <p><strong>Three operational uses for Publikum:</strong></p>
+          <ol>
+            <li>
+              <strong>Positioning.</strong> Market a polarized film as <em>productively divisive</em>
+              <strong>only when</strong> its keywords land in the productive lexicon. With rejected
+              keywords, controversy will not convert — sell on craft instead.
+            </li>
+            <li>
+              <strong>Comparable titles.</strong> Comp-matching should include a polarization-shape
+              filter, not just the arthouse label. A J-shape (love-heavy) film is comp-compatible
+              with another J-shape film; pairing it with a U-shape mis-sets review-variance
+              expectations.
+            </li>
+            <li>
+              <strong>Greenlighting / acquisition.</strong> The productive lexicon is a checklist.
+              Projects whose keywords cluster in the upper-right of Fig. 1 have, historically in
+              this cohort, achieved both critical respect and engaged audiences. That is the bet
+              an arthouse acquisition should optimize for.
+            </li>
+          </ol>
+          <div class="callout product" style="margin-top:3mm;">
+            <strong>One-line takeaway.</strong> Don't ask <em>is this film controversial?</em> —
+            ask <em>which kind of controversy does it carry?</em> Productive provocation is what
+            arthouse audiences pay for.
+          </div>
+        </div>
+        <div>
+          <p><strong>Limitations kept honest.</strong></p>
+          <ul>
+            <li>Polarization computed only on the <strong>32%</strong> of films with ≥100 IMDb votes — small, recent, and non-Anglophone titles drop out.</li>
+            <li>Commercial ROI not analyzed (<strong>2.2%</strong> budget+revenue coverage, n=91).</li>
+            <li>Cinephile-discovery direction parked (MovieLens <strong>1.5%</strong> coverage).</li>
+            <li>The lexicon is <strong>descriptive of past patterns</strong>, not predictive of new films.</li>
+            <li>Quadrant medians shift if the cohort definition shifts — recompute when re-scoping.</li>
+          </ul>
+          <p style="margin-top:3mm;"><strong>Did we provide business value?</strong>
+            Yes — a positioning variable, a comp-shape filter, and a keyword checklist that
+            historically separates productive from rejected controversy. All three plug directly
+            into Publikum's existing decision workflows.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =================== FOOTER =================== -->
+  <footer class="footer">
+    <div>
+      <span class="credit">DTU · Analytics in Action · Spring 2026</span>
+      &nbsp;·&nbsp; Industry partner: Publikum
+      &nbsp;·&nbsp; Cohort: 4,191 arthouse films from 50,000-film universe
+      &nbsp;·&nbsp; Code &amp; methodology: <code>general_analysis_executed.ipynb</code>, <code>provocation_analysis.ipynb</code>
+    </div>
+    <div>v1 · 2026-05-10</div>
+  </footer>
+
+</div>
+</body>
+</html>
